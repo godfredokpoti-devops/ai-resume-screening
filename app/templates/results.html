@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Analysis Result</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f4f4;
+            padding:40px;
+        }
+
+        .container{
+            background:white;
+            padding:30px;
+            border-radius:10px;
+            max-width:1000px;
+            margin:auto;
+        }
+
+        h1{
+            color:#333;
+        }
+
+        .score{
+            font-size:40px;
+            font-weight:bold;
+            color:white;
+            background: #28a745;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .progress{
+            width: 100%;
+            background:#add;
+            height: 30px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        .progress-fill{
+            height: 100%;
+            background:#28a745;
+        }
+
+        .rating{
+            display:inline-block;
+            padding:10px 20px;
+            border-radius:8px;
+            font-weight:bold;
+            color:white;
+            background-color:#4CAF50;
+}
+        ul{
+            padding-left:20px;
+        }
+
+        li{
+            margin-bottom:10px;
+        }
+
+        a{
+            text-decoration:none;
+            color:white;
+            background:#007BFF;
+            padding:10px 20px;
+            border-radius:5px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Resume Analysis Result</h1>
+
+    <p><strong>Filename:</strong> {{ filename }}</p>
+
+    <div class="score" style="background: {{ score_color }};">
+        ATS Score: {{ ats_score }}%
+    </div>
+
+    <div class="progress">
+        <div class="progress-fill"
+             style="width: {{ ats_score }}%; background: {{ score_color }};">
+        </div>
+    </div>
+
+    <h2>Skills Found</h2>
+    <ul>
+        {% for skill in skills_found %}
+            <li>{{ skill }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Missing Skills</h2>
+    <ul>
+        {% for skill in missing_skills %}
+            <li>{{ skill }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Rating</h2>
+    <div class="rating">
+        {{ rating }}
+    </div>
+
+    <h2>Recommendations</h2>
+    <ul>
+        {% for recommendation in recommendations %}
+            <li>{{ recommendation }}</li>
+        {% endfor %}
+    </ul>
+
+    <br>
+
+    <a href="/">Analyze Another Resume</a>
+
+</div>
+
+</body>
