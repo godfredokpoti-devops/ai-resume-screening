@@ -57,6 +57,32 @@ Author
 Godfred Okpoti
 
 Senior Cloud & DevOps Engineer | AI/ML Infrastructure Architect
+## Architecture
+
+```text
+User Upload Resume
+        │
+        ▼
+ FastAPI Backend
+        │
+        ▼
+ Resume Parser
+        │
+        ▼
+ ATS Scoring Engine
+        │
+        ▼
+ Skills Detection
+        │
+        ▼
+ Missing Skills Analysis
+        │
+        ▼
+ Recommendation Engine
+        │
+        ▼
+ Results Dashboard
+```
 
 ## Application Screenshots
 
