@@ -57,3 +57,9 @@ Author
 Godfred Okpoti
 
 Senior Cloud & DevOps Engineer | AI/ML Infrastructure Architect
+
+## Application Screenshots
+
+### FastAPI Swagger UI
+
+![Swagger UI](screenshots/swagger-ui.png)
