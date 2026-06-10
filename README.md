@@ -89,3 +89,10 @@ User Upload Resume
 ### FastAPI Swagger UI
 
 ![Swagger UI](screenshots/swagger-ui.png)
+### ATS Results Dashboard
+
+![ATS Results Dashboard](screenshots/results-dashboard-A.png)
+
+### Missing Skills Analysis
+
+![Missing Skills Analysis](screenshots/results-dashboard-B.png)
