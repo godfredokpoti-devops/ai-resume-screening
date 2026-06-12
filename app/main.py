@@ -4,6 +4,14 @@ import pdfplumber
 import tempfile
 import spacy
 
+from app.database import engine
+from app.database import SessionLocal
+
+from app.models import Base
+from app.models import Candidate
+
+Base.metadata.create_all(bind=engine)
+
 nlp = spacy.load("en_core_web_sm")
 SKILLS = [
     "Python",
@@ -141,6 +149,19 @@ async def upload_resume(
     else:
         score_color = "#dc3545"
 
+    db = SessionLocal()
+
+    candidate = Candidate(
+        resume_name=file.filename,
+        ats_score=match_score,
+        matched_skills=", ".join(found_skills),
+        missing_skills=", ".join(missing_skills)
+    )
+
+    db.add(candidate)
+    db.commit()
+    db.close()
+
     return templates.TemplateResponse(
         request,
         "results.html",
@@ -152,5 +173,19 @@ async def upload_resume(
             "rating": rating,
             "score_color": score_color,
             "recommendations": recommendations,
+        }
+    )
+
+@app.get("/admin")
+def admin_dashboard(request: Request):
+    db = SessionLocal()
+    candidates = db.query(Candidate).all()
+    db.close()
+
+    return templates.TemplateResponse(
+        request,
+        "admin.html",
+        {
+            "candidates": candidates
         }
     )

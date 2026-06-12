@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recruiter Dashboard</title>
+</head>
+<body>
+
+<h1>Recruiter Dashboard</h1>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>ID</th>
+        <th>Resume</th>
+        <th>ATS Score</th>
+        <th>Matched Skills</th>
+        <th>Missing Skills</th>
+    </tr>
+
+    {% for candidate in candidates %}
+    <tr>
+        <td>{{ candidate.id }}</td>
+        <td>{{ candidate.resume_name }}</td>
+        <td>{{ candidate.ats_score }}%</td>
+        <td>{{ candidate.matched_skills }}</td>
+        <td>{{ candidate.missing_skills }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
